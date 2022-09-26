@@ -1,6 +1,4 @@
-### Summary of Day 2
-&nbsp;
-
+# W01D02
 
 #### `Git`
 

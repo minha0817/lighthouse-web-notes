@@ -1,5 +1,4 @@
-### Summary of Day 3
-&nbsp;
+# W01D03
 
 #### `Data types` <br>
 1. Primitive data types : Essential building blocks. `undefined, Boolean, null, NaN, string, number, symbol, BigInt`<br>
