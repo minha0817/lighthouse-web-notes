@@ -19,7 +19,9 @@
 * steps.
 1. Create a new folder. (car)
 2. Inside the folder, one file (shouldBuyCar.js) & one more folder called test and in the test, one file (carTest.js)
-3. On the car directory, `npm install mocha@9.2.2 chai --save-dev.`
+3. On the car directory,
+ * `npm init -y` <br>
+ * `npm install mocha@9.2.2 chai --save-dev.`
 4. Update the scripts object in the package.json to the following
 ```js
 "scripts": {
