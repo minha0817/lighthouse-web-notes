@@ -5,7 +5,7 @@
 This repository contains all of the notes taken by [Minha Kim](https://github.com/minha0817) for the Lighthouse Labs Web Development Bootcamp.
 
 * [Week 1](/Week_1)
-  * [Day 1](/Week_1/Day_1)
+  * [Day 1](/Week_1/Day_1.md)
   * [Day 2](/Week_1/Day_2.md)
   * [Day 3](/Week_1/Day_3.md)
   * [Day 4](/Week_1/Day_4.md)
