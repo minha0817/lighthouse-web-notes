@@ -7,9 +7,20 @@
 * [x] File System Functions (`fs`)
 
 ### Asynchronous Programming
-* JavaScript is `synchronous`; executing one line of code after the previous one has completed
-* Asynchronous programming allows us to start a long running process, execute other code, and then perform some operation once the running long process has completed
-* We generally use async programming when using API's outside of our application (eg. interacting with a database, making a web request, retrieving the user's geolocation coordinates)
+
+* Code has to wait for the previous lines of code to finish, but these can take time to execute. The solution is to multitask using asynchronous control flow. 
+
+* JavaScript is `synchronous`; executing one line of code after the previous one has completed.
+
+* Asynchronous programming allows us to start a long running process, execute other code, and then perform some operation once the running long process has completed.
+
+* We generally use async programming when using API's outside of our application (eg. interacting with a database, making a web request, retrieving the user's geolocation coordinates).
+
+* Async function do not have `return value`. They don't recognize what the return is when they are called from task queue to call stack. 
+When we want to return value from aync function, a callback should be passed in, and it will be given the data. `return data` => `callback(data)`
+
+* All async code mush finish before any sync code starts. That means, when the main thread finishes, that's when event loop starts to push async function from task queue(call back queue) to call stack. (Call stack is where the order of code execution stacks)
+
 * **Note:** Using a callback does not necessarily mean asynchronous code. Think of a `forEach` or a `map`. That code is executed synchronously while using a callback.
 
 ### Blocking vs Non-Blocking
@@ -61,10 +72,35 @@ const interval = setInterval(() => {
   }
 }, 1000);
 ```
+### User Input
+* When we want our Node app to keep running and allow the user to type in more information? ==> Event handling.
+```js
+const stdin = process.stdin; //-> Node's object
 
+stdin.setRawMode(true);
+stdin.setEncoding('utf8');
+process.stdin.on('data', (key) => {
+  process.stdout.write('.');
+
+if (key === '\u0003') {
+  process.exit();
+}
+});
+
+console.log('after callback');
+```
+* In this case, out callback funtion is called each time there is a new user input data, simply prints a '.' to the screen.
+* `stdin`(standard input) -> data from keyboard
+* `stdout`(standard output) -> data shows on screen.
+* We use `on`method on stdin to register a callback to handl events. 
+
+
+* 
 ### File System Functions
 * Node has a built-in module that allows us to interact with the filesystem (ie. read/write to files)
 * We can require the `fs` module into our code just like any other module
+
+* `readfile` is async function.
 
 ```js
 const fs = require('fs');
