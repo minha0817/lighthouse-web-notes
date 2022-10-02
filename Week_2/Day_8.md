@@ -22,11 +22,14 @@
 ### Mocha
 - A testing framework
 - By default, looks in the `test` folder for test files to run
+- gives us the `describe` and `it`functions and each `it` is a test and each test should have at least one assertion.
 ### Chai
 - An **assertion** library
 - We can use _assertions_ to describe the desired outcome of our code
 - Chai offers three different interfaces: `should`, `expect`, and `assert`
 - For most uses, choosing which interface to use is a matter of preference
+- It's for to play nice with testing frameworks like Mocha.
+
 ```js
 // should
 myVar.should.be.a('string');
@@ -72,6 +75,29 @@ node_modules
 my-file.js
 ```
 * Using the above file, the `node_modules` folder and the file `my-file.js` will not be tracked by git
+* if you accidentall already uploaded node_modules(any file that you don't intend to track), then you can delete with this command. `git rm -r node_modules`
+
+### Asynchronous programming 
+
+* Asynchronous programming is when a unit of work is run separately from the main thread of the program and notifies the program of its completion.
+
+### setTimeout
+
+* setTimeout is used to delay the execution of some code to later. We specify the code via a callback, and the delay in ms.
+* It's used on many websites to delay a message or response
+* We are learning about it for purposes of practicing async programming in JS
+
+```js
+console.log('first line');
+setTimeout(() => {
+  console.log('timeout line');
+}, 1000);
+console.log('last line');
+```
+
+### Additional info :
+- If there's a package.json, that means somehow it's working with NPM and it's installed. 
+
 ### Useful Links
 - [Node Modules](https://nodejs.org/docs/latest/api/modules.html)
 - [Node Wrapper Function](https://nodejs.org/api/modules.html#modules_the_module_wrapper)
