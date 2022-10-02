@@ -43,21 +43,6 @@ Being in the fourth layer*, these two protocols manage the transmission of our i
 - Each packet travels through the network independently
 - Packets are reassembled into a full message when reaching destination
 
-#### Small Joke about TCP
-
-Hello, would you like to hear a TCP joke?
-Yes, I'd like to hear a TCP joke.
-OK, I'll tell you a TCP joke.
-OK, I'll hear a TCP joke.
-Are you ready to hear a TCP joke?
-Yes, I am ready to hear a TCP joke.
-OK, I'm about to send the TCP joke. It will last 10 seconds, it has two characters, it does not have a setting, it ends with a punchline.
-OK, I'm ready to hear the TCP joke that will last 10 seconds, has two characters, does not have a setting and will end with a punchline.
-I'm sorry, your connection has timed out... ...Hello, would you like to hear a TCP joke?
-
-#### Small Joke about UDP
-
-I'll tell you a joke about UDP, but you might not get it.
 
 ### TCP Demo
 
@@ -92,32 +77,40 @@ Languages that computers program use to communicate with one another (usually ov
 ## Mechanics of a HTTP exchange
 
 ### What is HTTP ?
+- what is hypertext? => contains links to other texts.
+- HyperText Transfer Protocol.
+- How a web client (browser, etc) communicates with a web server like fetching resources, exchanging data...
+- The client initiates a request and the server sends back a response.
+- HTTP is a text based protocol for humans.
+- HTTP is text-based "language" that is used to communicate over a TCP connection.
 
-- HyperText Transfer Protocol
-- How a web client (browser, etc) communicates with a web server
-- The client initiates a request and the server sends back a response
+### HTTP Flow? 
+- It's a protocol based on request-respond between client and HTTP server. 
+
 
 ### Request
 
-The initial step of an HTTP exchange is the request. In the request, we want to make an action, decided by the method, to a specific path, the URL, with specific headers and an optional body content.
+The initial step of an HTTP exchange is the request. In the request, we want to make an action, decided by the `method`, to a specific `path`, the URL, with specific headers and an optional body content.
 
 ### Methods
 
-GET - I want to GET information from the server ( GET THE MENU)
-POST - I want to post something on the server
-PUT/PATCH - I want to update something
-DELETE - I want to delete something
+`GET` - I want to GET information from the server ( GET THE MENU)
+`POST` - I want to post something on the server
+`PUT/PATCH` - I want to update something
+`DELETE` - I want to delete something
 
 ### Path
 
 URI - Uniform Resource Identifier (GET /menu)
-URL - Uniform Resource Locator
+URL - Uniform Resource Locator which is a given unique resource on the web.
+- Path is a part of the URL. 
 
 More info : https://damnhandy.com/2011/01/18/url-vs-uri-vs-urn-the-confusion-continues/
+(Scheme/ Domain name/ Part/ Path to file/ Parameters/ Anchor)
 
 ### Request / Response Header
 
-It's where information about the request like cookies and user agent are defined
+It's where information about the request like cookies and user agent are defined. It's key: value pairs.
 
 ```
 GET /www.google.com/search?q=bootcamp HTTP/1.1
@@ -137,7 +130,9 @@ user-agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Geck
 
 ### Request / Response Body
 
-Information we want to send, or the information that we receive from the request
+* Response from server has two parts. 1. Status code 2. Body. 
+* Body contains webpages(HTML) or data encoded in JSON.
+* Information we want to send, or the information that we receive from the request
 
 ```
 Content-Type: application/json
@@ -260,4 +255,16 @@ const result = someConnection === listOfCoolConnections[0];
 
 console.log(result);
 
+```
+
+- How to make HTTP request? one of the way is use `net module`.
+- Every time our browser accesses a website, it makes an HTTP request by opening a TCP connection on port 80 (or 443 for https) to a given HTTP server's IP address.
+- The `request module` makes HTTP requests easy.
+```js
+const request = require('request');
+request('http://www.google.com', (error, response, body) => {
+  console.log('error:', error); // Print the error if one occurred
+  console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+  console.log('body:', body); // Print the HTML for the Google homepage.
+});
 ```
